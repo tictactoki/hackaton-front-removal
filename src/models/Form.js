@@ -13,7 +13,14 @@ export class Form extends React.Component {
     render() {
         return (
           <form>
-              <input type="text" value="email"/>
+              <label for="email">Email</label>
+              <input type="text" id="email" className="email"/>
+              <label for="site">Site</label>
+              <select name="Sites">
+                  <option value="SeLoger">SeLoger</option>
+                  <option value="SeLogerNeuf">SeLogerNeuf</option>
+                  <option value="BD">Belle Demeures</option>
+              </select>
           </form>
         );
     }
