@@ -13,8 +13,10 @@ export class Form extends React.Component {
 
 
     emailChange(event) {
+        console.log(this.props.reasons);
         this.setState({email: this.state.email});
     }
+
 
     render() {
         return (
@@ -28,14 +30,13 @@ export class Form extends React.Component {
                   <option value="BD">Belle Demeures</option>
               </select>
               <div>
-                <div>
-                    <label for="trust">Je n'ai pas confiance dans le traitement de mes données personnelles</label>
-                    <input type="checkbox" name="trust"/>
-                </div>
-                  <div>
-                    <label for="spam">Je reçois trop d'email/sms</label>
-                    <input type="checkbox" name="spam"/>
-                </div>
+                  {this.props.reasons.map(function(reason, ind) {
+                      console.log(reason);
+                      return <div>
+                          <label for={reason.name}>{reason.value}</label>
+                          <input type="checkbox" name={reason.name}/>
+                      </div>
+                  })}
               </div>
 
           </form>
