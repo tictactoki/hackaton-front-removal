@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export class Form extends React.Component {
     constructor(props) {
         super(props);
@@ -7,32 +8,54 @@ export class Form extends React.Component {
             email: null,
             site: null
         }
+        this.emailChange = this.emailChange(this);
     }
 
+    prepare_query(){
+        const url = "https://ws-gdpr-user-removal.prod.aws.datahub.poliris.net/api/on-demand?bubbles=&mediaPurposes="
+        var website = ""
+        var email = "&email="
+        if (this.state.site != null) website += "&webSite=" + this.state.site
+        if (this.state.site != null) email += this.state.email
+        return url + email + website
+    }
 
+    handleSubmit(event){
+        event.preventDefault()
+        this.state.email = event.data.email
+        this.state.site = event.data.site
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {
+                "accept": "application/json"
+            }
+        };
+        const query = this.prepare_query()
+        fetch(query, requestOptions)
+    }
 
     render() {
         return (
-          <form>
-              <label for="email">Email</label>
-              <input type="text" id="email"/>
-              <label for="site">Site</label>
-              <select name="Site" id="site">
-                  <option value="SeLoger">SeLoger</option>
-                  <option value="SeLogerNeuf">SeLogerNeuf</option>
-                  <option value="BD">Belle Demeures</option>
-              </select>
-              <div class="reasons">
-                  {this.props.reasons.map(function(reason, ind) {
-                      console.log(reason);
-                      return <div>
-                          <input type="checkbox" name={reason.name}/>
-                          <label for={reason.name}>{reason.value}</label>
-                      </div>
-                  })}
-              </div>
-
-          </form>
+            <form ref="form" onSubmit={this.handleSubmit}>
+                <label for="email">Email</label>
+                <input type="text" id="email"/>
+                <label for="site">Site</label>
+                <select name="Site" id="site">
+                    <option value="SeLoger">SeLoger</option>
+                    <option value="SeLogerNeuf">SeLogerNeuf</option>
+                    <option value="BD">Belle Demeures</option>
+                </select>
+                <div>
+                    {this.props.reasons.map(function(reason, ind) {
+                        console.log(reason);
+                        return <div>
+                            <label for={reason.name}>{reason.value}</label>
+                            <input type="checkbox" name={reason.name}/>
+                        </div>
+                    })}
+                </div>
+                <button type="submit">Submit</button>
+            </form>
         );
     }
 
