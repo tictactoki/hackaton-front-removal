@@ -37,7 +37,7 @@ export class Form extends React.Component {
         return (
             <form ref="form" onSubmit={this.handleSubmit}>
                 <label for="email">Email</label>
-                <input type="text" id="email"/>
+                <input type="text" placeholder="email@email.com" id="email"/>
                 <label for="site">Site</label>
                 <select name="Site" id="site">
                     <option value="SeLoger" selected="selected">SeLoger</option>
@@ -51,6 +51,11 @@ export class Form extends React.Component {
                             <label for={reason.name}>{reason.value}</label>
                         </div>
                     })}
+                    <div class="other">
+                        <input type="checkbox" name="othercheck"/>
+                        <label for="other">Autre...</label>
+                        <input class="textarea" type="textarea" name="other"/>
+                    </div>
                 </div>
                 <button type="submit">Je supprime mes données</button>
             </form>

@@ -63,3 +63,8 @@ div.reasons div{
 div.reasons input{
   margin-right: 5px;
 }
+
+div.other input.textarea{
+  margin-left: 5px;
+  width: 70%;
+}

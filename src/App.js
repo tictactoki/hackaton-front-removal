@@ -16,7 +16,8 @@ const reasons = [
     new Reason("sub","Je suis inscrit à une liste de communication à laquelle je n'ai jamais souscrit"),
     new Reason("spam", "Je reçois trop d'email/sms"),
     new Reason("answer", "Le site a répondu à mon besoin et je n'en ai plus l'utilité"),
-    new Reason("del", "Je veux juste supprimer mes données")
+    new Reason("del", "Je veux juste supprimer mes données"),
+    new Reason("pro", "Je ne souhaite pas me prononcer")
 ]
 
 function App() {
