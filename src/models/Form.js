@@ -8,27 +8,28 @@ export class Form extends React.Component {
             email: null,
             site: null
         }
+        this.prepare_query = this.prepare_query.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    prepare_query(){
+    prepare_query(email, site) {
         const url = "https://ws-gdpr-user-removal.prod.aws.datahub.poliris.net/api/on-demand?bubbles=&mediaPurposes=";
         var website = "";
-        var email = "&email=";
-        if (this.state.site != null) website += "&webSite=" + this.state.site;
-        if (this.state.site != null) email += this.state.email;
-        return url + email + website;
+        var prefix_email = "&email=";
+        website += "&webSite=" + site;
+        prefix_email += email;
+        return url + prefix_email + website;
     }
 
     handleSubmit(event){
         event.preventDefault();
-        this.setState({email: event.data.email, site: event.data.site});
         const requestOptions = {
             method: 'DELETE',
             headers: {
                 "accept": "application/json"
             }
         };
-        const query = this.prepare_query();
+        const query = this.prepare_query(event.target.email.value, event.target.site.value);
         fetch(query, requestOptions);
     }
 
@@ -39,9 +40,9 @@ export class Form extends React.Component {
                 <input type="text" id="email"/>
                 <label for="site">Site</label>
                 <select name="Site" id="site">
-                    <option value="SeLoger">SeLoger</option>
+                    <option value="SeLoger" selected="selected">SeLoger</option>
                     <option value="SeLogerNeuf">SeLogerNeuf</option>
-                    <option value="BD">Belle Demeures</option>
+                    <option value="BelleDemeures">Belle Demeures</option>
                 </select>
                 <div>
                     {this.props.reasons.map(function(reason, ind) {
