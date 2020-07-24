@@ -14,7 +14,9 @@ const reasons = [
     new Reason("trust","Je n'ai pas confiance dans le traitement de mes données personnelles"),
     new Reason("unknown","Je ne sais pas à quoi servent mes données donc je préfère demander leur suppression"),
     new Reason("sub","Je suis inscrit à une liste de communication à laquelle je n'ai jamais souscrit"),
-    new Reason("spam", "Je reçois trop d'email/sms")
+    new Reason("spam", "Je reçois trop d'email/sms"),
+    new Reason("answer", "Le site a répondu à mon besoin et je n'en ai plus l'utilité"),
+    new Reason("del", "Je veux juste supprimer mes données")
 ]
 
 function App() {

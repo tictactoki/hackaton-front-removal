@@ -34,10 +34,11 @@ form label {
   margin: 15px 0 5px 0;
 }
 form button {
-  margin-top: 15px;
-  padding: 10px 15px;
+  margin: 15px auto;
+  padding: 15px 20px;
   border-radius: 5px;
   border: 0;
+  width: auto;
   text-transform: uppercase;
   background-color: rgb(224, 0, 52);
   color: white;

@@ -44,15 +44,15 @@ export class Form extends React.Component {
                     <option value="SeLogerNeuf">SeLogerNeuf</option>
                     <option value="BelleDemeures">Belle Demeures</option>
                 </select>
-                <div>
+                <div class="reasons">
                     {this.props.reasons.map(function(reason, ind) {
                         return <div>
-                            <label for={reason.name}>{reason.value}</label>
                             <input type="checkbox" name={reason.name}/>
+                            <label for={reason.name}>{reason.value}</label>
                         </div>
                     })}
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Je supprime mes données</button>
             </form>
         );
     }
