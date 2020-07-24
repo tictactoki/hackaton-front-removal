@@ -21,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <main>
+          <h1>Suppression des données internautes</h1>
         <section>
           <Form reasons={reasons}/>
         </section>
